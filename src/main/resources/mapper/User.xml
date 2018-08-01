@@ -4,7 +4,30 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="test">
     <!-- 通过id查询用户表的记录 -->
-    <select id="findUserById" parameterType="int" resultType="com.tangjie.mybatis.entity.User">
+    <select id="findUserById" parameterType="java.lang.String" resultType="com.tangjie.mybatis.entity.User">
         select * from user where id =#{id}
     </select>
+    <!--通过username模糊查询user信息-->
+    <select id="findUserByName" parameterType="java.lang.String" resultType="com.tangjie.mybatis.entity.User">
+        select * from user where username like '%${value}%'
+        <!--select * from user where username like #{value}-->
+    </select>
+    <insert id="insertUser" parameterType="com.tangjie.mybatis.entity.User">
+        <!--<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">-->
+            <!--select LAST_INSERT_ID()-->
+        <!--</selectKey>-->
+        <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.String">
+            select uuid()
+        </selectKey>
+        insert into user(id,username,birthday,sex,address) value(#{id},#{username},#{birthday},#{sex},#{address})
+
+    </insert>
+
+    <delete id="deleteUser" parameterType="java.lang.String">
+        delete from user where id = #{value}
+    </delete>
+
+    <update id="updateUser" parameterType="com.tangjie.mybatis.entity.User">
+        update user set username=#{username},birthday=#{birthday},sex=#{sex},address=#{address} where id=#{id}
+    </update>
 </mapper>

@@ -31,6 +31,11 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.21</version>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.25</version>
+        </dependency>
         <!-- 添加阿里巴巴连接池Druid支持 -->
         <dependency>
             <groupId>com.alibaba</groupId>

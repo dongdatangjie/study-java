@@ -1,14 +1,36 @@
 package com.tangjie.mybatis.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 
-@Data
+@Getter
+@Setter
 public class User {
-    private int id;
+    private String id;
     private String username;
     private Date birthday;
     private String sex;
     private String address;
+
+    public User(){}
+
+    public User(String username, Date birthday, String sex, String address) {
+        this.username = username;
+        this.birthday = birthday;
+        this.sex = sex;
+        this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", username='" + username + '\'' +
+                ", birthday=" + birthday +
+                ", sex='" + sex + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }

@@ -3,6 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <!--<typeAliases>-->
+        <!--<typeAlias type="com.tangjie.mybatis.entity.User" alias="user"></typeAlias>-->
+    <!--</typeAliases>-->
+    <typeAliases>
+        <package name="com.tangjie.mybatis.entity"></package>
+    </typeAliases>
     <!-- 和spring整合后 environments配置将废除-->
     <environments default="development">
         <environment id="development">
@@ -19,5 +25,6 @@
     </environments>
     <mappers>
         <mapper resource="mapper/User.xml"/>
+        <mapper resource="mapper/UserMapper.xml"/>
     </mappers>
 </configuration>
